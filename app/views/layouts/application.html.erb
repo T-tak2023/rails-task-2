@@ -17,7 +17,7 @@
         <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </li>
       <li>
-        <%= link_to "アカウント設定", user_path(current_user) %>
+        <%= link_to "アカウント設定", users_account_path %>
       </li>
     <% else %>
       <li>
