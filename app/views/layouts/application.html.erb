@@ -19,6 +19,16 @@
       <li>
         <%= link_to "アカウント設定", users_account_path %>
       </li>
+      <li>
+        <%= current_user.name %>
+      </li>
+      <li>
+        <% if current_user.icon_image? %>
+          <%= image_tag current_user.icon_image.url %>
+        <% else %>
+          <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン' %>
+        <% end %>
+      </li>
     <% else %>
       <li>
         <%= link_to "新規作成", new_user_registration_path %>
