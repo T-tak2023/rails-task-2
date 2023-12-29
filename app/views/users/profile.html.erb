@@ -4,5 +4,11 @@
 <p>MyPage</p>
 <h3>ユーザーネーム</h3>
 <%= @user.name %>
+<h3>アイコン画像</h3>
+<% if @user.icon_image? %>
+    <%= image_tag @user.icon_image.url %>
+<% else %>
+    <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン' %>
+<% end %>
 <h3>自己紹介</h3>
 <%= @user.introduction %>

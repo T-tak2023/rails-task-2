@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: [:account, :profile,:profile_edit, :profile_update]
+  before_action :authenticate_user!, only: [:account, :profile, :profile_edit, :profile_update]
   def account
     @user = current_user
   end
@@ -22,10 +22,10 @@ class UsersController < ApplicationController
   end
   private
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:profile_update, keys: [:name, :introduction])
+    devise_parameter_sanitizer.permit(:profile_update, keys: [:name, :introduction, :icon_image])
   end
     
   def profile_params
-    params.require(:user).permit(:name, :introduction)
+    params.require(:user).permit(:name, :icon_image, :introduction)
   end
 end
