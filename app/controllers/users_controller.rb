@@ -21,11 +21,11 @@ class UsersController < ApplicationController
     end 
   end
   private
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:profile_update, keys: [:name, :introduction, :icon_image])
-  end
+    def configure_permitted_parameters
+      devise_parameter_sanitizer.permit(:profile_update, keys: [:name, :introduction, :icon_image])
+    end
     
-  def profile_params
-    params.require(:user).permit(:name, :icon_image, :introduction)
-  end
+    def profile_params
+      params.require(:user).permit(:name, :icon_image, :introduction)
+    end
 end

@@ -18,10 +18,10 @@
       <td><%= room.room_name %></td>
       <td><%= room.room_introduction %></td>
       <td><%= room.price_per_day %></td>      
-      <td><%= room.created_at %></td>
+      <td><%= room.created_at.to_s(:datetime_jp) %></td>
     </tr>
   <% end %>
 </tbody>
 </table>
 
-<p><%= link_to "施設新規登録", :new_room %></p>
+<p><%= link_to "施設新規登録", :new_room %></p>　
