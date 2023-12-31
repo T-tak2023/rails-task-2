@@ -1,0 +1,27 @@
+<h3>施設一覧</h3>
+
+<table>
+<thead>
+  <tr>
+    <th>id</th>
+    <th>施設名</th>
+    <th>施設詳細</th>
+    <th>料金</th>
+    <th>作成日</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @rooms.each do |room| %>
+    <tr>
+      <td><%= room.id %></td>
+      <td><%= room.room_name %></td>
+      <td><%= room.room_introduction %></td>
+      <td><%= room.price_per_day %></td>      
+      <td><%= room.created_at %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
+
+<p><%= link_to "施設新規登録", :new_room %></p>

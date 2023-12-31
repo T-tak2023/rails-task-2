@@ -1,0 +1,32 @@
+<h3>施設新規作成</h3>
+ 
+<%= form_with model: @room do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :room_name ,"施設名" %></th>
+      <td><%= f.text_field :room_name %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :room_introduction ,"施設詳細" %></th>
+      <td><%= f.text_field :room_introduction %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :price_per_day ,"料金" %></th>
+      <td><%= f.text_field :price_per_day %></td>
+    </tr>
+
+    <tr>
+      <th><%= f.label :room_address ,"住所" %></th>
+      <td><%= f.text_field :room_address %></td>
+    </tr>
+  </table>
+
+  <div>
+    <ul>
+      <li><%= f.submit "登録完了する"%></li>
+      <li><%= link_to "施設一覧に戻る", :rooms %></li>
+    </ul>
+  </div>
+<% end %>
