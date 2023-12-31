@@ -30,6 +30,9 @@
           <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン' %>
         <% end %>
       </li>
+      <li>
+        <%= link_to "登録施設一覧", :rooms %>
+      </li>
     <% else %>
       <li>
         <%= link_to "新規作成", new_user_registration_path %>
