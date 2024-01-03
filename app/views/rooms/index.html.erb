@@ -7,6 +7,7 @@
     <th>施設名</th>
     <th>施設詳細</th>
     <th>料金</th>
+    <th>施設画像</th>
     <th>作成日</th>
   </tr>
 </thead>
@@ -17,11 +18,18 @@
       <td><%= room.id %></td>
       <td><%= room.room_name %></td>
       <td><%= room.room_introduction %></td>
-      <td><%= room.price_per_day %></td>      
+      <td><%= room.price_per_day %></td>
+      <td>
+        <% if room.room_image? %>
+          <%= image_tag room.room_image.url %>
+        <% else %>
+          <%= image_tag '/assets/default_room_image.png', :alt => '施設画像' %>
+        <% end %>
+      </td>
       <td><%= room.created_at.to_s(:datetime_jp) %></td>
     </tr>
   <% end %>
 </tbody>
 </table>
 
-<p><%= link_to "施設新規登録", :new_room %></p>　
+<p><%= link_to "施設新規登録", :new_room %></p>

@@ -1,4 +1,4 @@
-class IconImageUploader < CarrierWave::Uploader::Base
+class RoomImageUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
@@ -15,7 +15,7 @@ class IconImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url(*args)
-    "default_icon.png"
+    "default_room_image.png"
   end
 
   # Process files as they are uploaded:
