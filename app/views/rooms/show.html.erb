@@ -1,0 +1,27 @@
+<h3>施設詳細</h3>
+
+<table>
+  <tr>
+    <th>施設画像</th>
+    <td><% if @room.room_image? %>
+          <%= image_tag @room.room_image.url %>
+        <% else %>
+          <%= image_tag '/assets/default_room_image.png', :alt => '施設画像' %>
+        <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>施設名</th>
+    <td><%= @room.room_name %></td>
+  </tr>
+  <tr>
+    <th>詳細</th>
+    <td><%= @room.room_introduction %></td>
+  </tr>
+  <tr>
+    <th>料金</th>
+    <td><%= @room.price_per_day%></td>
+  </tr>
+</table>
+
+<%= link_to '戻る', :back %>

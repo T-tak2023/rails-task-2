@@ -16,7 +16,7 @@
   <% @rooms.each do |room| %>
     <tr>
       <td><%= room.id %></td>
-      <td><%= room.room_name %></td>
+      <td><%= link_to room.room_name, room %></td>
       <td><%= room.room_introduction %></td>
       <td><%= room.price_per_day %></td>
       <td>
