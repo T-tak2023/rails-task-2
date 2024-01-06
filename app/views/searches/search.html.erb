@@ -1,11 +1,20 @@
 <h2>Results index</h2>
-
+<%= "#{@records.count}"%> 件が見つかりました。
 <table> 
+  <thead>
+   <tr>
+     <th>施設名</th>
+     <th>住所</th>
+     <th>施設詳細</th>
+     <th>料金</th>
+  </thead>
   <tbody>
       <% @records.each do |data| %>
         <tr>
           <td><%= data.room_name %></td>
           <td><%= data.room_address %></td>
+          <td><%= data.room_introduction %></td>
+          <td><%= data.price_per_day %></td>
         </tr>
       <% end %>
   </tbody>
