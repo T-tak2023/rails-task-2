@@ -1,6 +1,5 @@
 class SearchesController < ApplicationController
   def search
-    @area = params[:area]
-    @records = Room.search_for(@area)
+    @records = Room.search_for(area: params[:area], keyword: params[:keyword])
   end
 end
