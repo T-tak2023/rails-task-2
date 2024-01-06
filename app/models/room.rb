@@ -6,7 +6,7 @@ class Room < ApplicationRecord
   validates :price_per_day, presence: true, numericality: {only_integer:true, greater_than_or_equal_to: 1}
   validates :room_address, presence: true
 
-  def self.search_for(query)
-    Room.where('room_address LIKE ?', '%' + query + '%')
+  def self.search_for(area)
+    Room.where('room_address LIKE ?', '%' + area + '%')
   end
 end
