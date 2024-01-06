@@ -1,0 +1,12 @@
+<h2>Results index</h2>
+
+<table> 
+  <tbody>
+      <% @records.each do |data| %>
+        <tr>
+          <td><%= data.room_name %></td>
+          <td><%= data.room_address %></td>
+        </tr>
+      <% end %>
+  </tbody>
+</table>
