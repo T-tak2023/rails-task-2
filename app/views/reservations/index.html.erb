@@ -1,0 +1,24 @@
+<h3>予約一覧</h3>
+<table>
+<thead>
+  <tr>
+    <th>id</th>
+    <th>チェックイン日</th>
+    <th>チェックアウト日</th>
+    <th>人数</th>
+    <th>予約確定日</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @reservations.each do |reservation| %>
+    <tr>
+      <td><%= reservation.id %></td>
+      <td><%= reservation.check_in_date %></td>
+      <td><%= reservation.check_out_date %></td>
+      <td>%= reservation.person %></td> 
+      <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>
