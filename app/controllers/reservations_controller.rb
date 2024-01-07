@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
 
   def new
     @reservation = Reservation.new
+    @room_id = params[:room_id]
   end
 
   def create
@@ -18,6 +19,6 @@ class ReservationsController < ApplicationController
 
   private
     def reservation_params
-      params.require(:reservation).permit(:check_in_date, :check_out_date, :person)
+      params.require(:reservation).permit(:check_in_date, :check_out_date, :person, :user_id, :room_id)
     end
 end

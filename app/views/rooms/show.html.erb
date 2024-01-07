@@ -24,6 +24,6 @@
     <td><%= @room.price_per_day%></td>
   </tr>
 </table>
-<%= link_to '予約する', new_reservation_path %>
+<%= link_to '予約する', new_reservation_path(room_id: @room.id) %>
 
 <%= link_to '戻る', :back %>

@@ -2,7 +2,7 @@
 <table>
 <thead>
   <tr>
-    <th>id</th>
+    <th>予約id</th>
     <th>チェックイン日</th>
     <th>チェックアウト日</th>
     <th>人数</th>
@@ -16,7 +16,7 @@
       <td><%= reservation.id %></td>
       <td><%= reservation.check_in_date %></td>
       <td><%= reservation.check_out_date %></td>
-      <td>%= reservation.person %></td> 
+      <td><%= reservation.person %>名</td> 
       <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
     </tr>
   <% end %>

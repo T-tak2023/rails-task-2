@@ -1,5 +1,5 @@
 <h3>施設予約</h3>
-
+<%= render 'shared/error', obj: @reservation %>
 <%= form_with model: @reservation do |f| %>
   <table>
     <tr>
@@ -14,13 +14,14 @@
 
     <tr>
       <th><%= f.label :person ,"人数" %></th>
-      <td><%= f.number_field :person %></td>
+      <td><%= f.number_field :person, in: 1..10 %></td>
     </tr>
   </table>
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_id, value: @room_id %>
   <div>
     <ul>
-      <li><%= f.submit "登録完了する"%></li>
+      <li><%= f.submit "予約する"%></li>
       <li><%= link_to "予約一覧に戻る", :reservations %></li>
     </ul>
   </div>
