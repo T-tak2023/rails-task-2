@@ -6,6 +6,7 @@ class ReservationsController < ApplicationController
   def new
     @reservation = Reservation.new
     @room_id = params[:room_id]
+    @room = Room.find(params[:room_id])
   end
 
   def create
