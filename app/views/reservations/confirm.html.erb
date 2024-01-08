@@ -1,0 +1,26 @@
+<h3>確認画面</h3>
+<%= render 'shared/error', obj: @reservation %>
+<table>
+  <tr>
+    <th>チェックイン日</th>
+    <td><%= @reservation.check_in_date.to_s(:date_jp) %></td>
+  </tr>
+  <tr>
+    <th>チェックアウト日</th>
+    <td><%= @reservation.check_out_date.to_s(:date_jp) %></td>
+  </tr>
+  <tr>
+    <th>人数</th>
+    <td><%= @reservation.person %></td>
+  </tr>
+</table>
+
+<%= form_with model: @reservation, url: reservations_path(@reservation), method: :post do |f| %>
+  <%= f.hidden_field :check_in_date, value: @reservation.check_in_date %>
+  <%= f.hidden_field :check_out_date, value: @reservation.check_out_date %>
+  <%= f.hidden_field :person, value: @reservation.person %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :room_id, value: @reservation.room_id %>
+  <%= f.submit '予約完了する' %>
+<% end %>
+<%= link_to '戻る', :back %>

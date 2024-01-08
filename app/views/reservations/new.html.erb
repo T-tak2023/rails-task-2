@@ -24,7 +24,8 @@
     <td><%= @room.price_per_day%></td>
   </tr>
 </table>
-<%= form_with model: @reservation do |f| %>
+
+<%= form_with model: @reservation, url: confirm_reservations_path(@reservation), method: :post do |f| %>
   <table>
     <tr>
       <th><%= f.label :check_in_date ,"チェックイン日" %></th>
@@ -42,10 +43,10 @@
     </tr>
   </table>
   <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :room_id, value: @room_id %>
+  <%= f.hidden_field :room_id, value: @room.id %>
   <div>
     <ul>
-      <li><%= f.submit "予約する"%></li>
+      <li><%= f.submit "確認画面へ" %></li>
       <li><%= link_to "予約一覧に戻る", :reservations %></li>
     </ul>
   </div>

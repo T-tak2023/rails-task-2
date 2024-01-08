@@ -9,13 +9,21 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:room_id])
   end
 
+  def confirm
+    @reservation = Reservation.new(reservation_params)
+    @room_id = params[:room_id]
+    @room = Room.find_by(params[:room_id])
+    if @reservation.invalid?
+      render :new
+    end
+  end
+
   def create
     @reservation = Reservation.create(reservation_params)
-    if @reservation.save
-      redirect_to :reservations
-    else
-      render "new"
+    if params[:back] || !@reservation.save
+      render :new and return
     end
+    redirect_to reservations_path
   end
 
   private
