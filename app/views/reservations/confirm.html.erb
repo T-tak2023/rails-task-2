@@ -10,8 +10,16 @@
     <td><%= @reservation.check_out_date.to_s(:date_jp) %></td>
   </tr>
   <tr>
+    <th>宿泊日数</th>
+    <td><%= @stay_duration %></td>
+  </tr>
+  <tr>
     <th>人数</th>
     <td><%= @reservation.person %></td>
+  </tr>
+  <tr>
+    <th>支払い金額</th>
+    <td><%= @total_price %></td>
   </tr>
 </table>
 

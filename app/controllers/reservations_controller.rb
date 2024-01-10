@@ -1,6 +1,7 @@
 class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.all
+    @rooms = Room.all
   end
 
   def new
@@ -11,11 +12,14 @@ class ReservationsController < ApplicationController
 
   def confirm
     @reservation = Reservation.new(reservation_params)
-    @room_id = params[:room_id]
-    @room = Room.find_by(params[:room_id])
+    @room_id = @reservation.room_id
+    @room = Room.find_by(id: @room_id)
+    @user_id = current_user.id
     if @reservation.invalid?
       render :new
     end
+    @stay_duration = (@reservation.check_out_date - @reservation.check_in_date).to_i
+    @total_price = @stay_duration * @room.price_per_day * @reservation.person
   end
 
   def create

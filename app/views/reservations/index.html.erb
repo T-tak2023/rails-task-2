@@ -3,9 +3,11 @@
 <thead>
   <tr>
     <th>予約id</th>
+    <th>施設画像</th>
+    <th>施設名</th>
+    <th>紹介文</th>
     <th>チェックイン日</th>
     <th>チェックアウト日</th>
-    <th>人数</th>
     <th>予約確定日時</th>
   </tr>
 </thead>
@@ -14,9 +16,17 @@
   <% @reservations.each do |reservation| %>
     <tr>
       <td><%= reservation.id %></td>
+      <td>
+        <% if reservation.room.room_image? %>
+          <%= image_tag reservation.room.room_image.url %>
+        <% else %>
+          <%= image_tag '/assets/default_room_image.png', :alt => '施設画像' %>
+        <% end %>
+      </td>
+      <td><%= reservation.room.room_name %></td>
+      <td><%= reservation.room.room_introduction %></td>
       <td><%= reservation.check_in_date.to_s(:date_jp) %></td>
       <td><%= reservation.check_out_date.to_s(:date_jp) %></td>
-      <td><%= reservation.person %>名</td> 
       <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
     </tr>
   <% end %>
