@@ -17,9 +17,10 @@ class ReservationsController < ApplicationController
     @user_id = current_user.id
     if @reservation.invalid?
       render :new
+    else
+      @stay_duration = (@reservation.check_out_date - @reservation.check_in_date).to_i
+      @total_price = @stay_duration * @room.price_per_day * @reservation.person
     end
-    @stay_duration = (@reservation.check_out_date - @reservation.check_in_date).to_i
-    @total_price = @stay_duration * @room.price_per_day * @reservation.person
   end
 
   def create

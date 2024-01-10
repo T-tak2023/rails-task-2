@@ -1,4 +1,4 @@
-<h2>Profile Edit</h2>
+<h2>プロフィール編集</h2>
 
 <%= form_with(model: @user, url: users_profile_edit_path, local:true) do |f| %>
   <table>
@@ -22,3 +22,4 @@
     </ul>
   </div>
 <% end %>
+<%= link_to '戻る', :back %>
