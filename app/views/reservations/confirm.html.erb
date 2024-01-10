@@ -27,6 +27,7 @@
   <%= f.hidden_field :check_in_date, value: @reservation.check_in_date %>
   <%= f.hidden_field :check_out_date, value: @reservation.check_out_date %>
   <%= f.hidden_field :person, value: @reservation.person %>
+  <%= f.hidden_field :total_price, value: @total_price %>
   <%= f.hidden_field :user_id, value: current_user.id %>
   <%= f.hidden_field :room_id, value: @reservation.room_id %>
   <%= f.submit '予約完了する' %>

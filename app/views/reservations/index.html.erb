@@ -8,6 +8,7 @@
     <th>紹介文</th>
     <th>チェックイン日</th>
     <th>チェックアウト日</th>
+    <th>合計金額</th>
     <th>予約確定日時</th>
   </tr>
 </thead>
@@ -27,6 +28,7 @@
       <td><%= reservation.room.room_introduction %></td>
       <td><%= reservation.check_in_date.to_s(:date_jp) %></td>
       <td><%= reservation.check_out_date.to_s(:date_jp) %></td>
+      <td><%= reservation.total_price %></td>
       <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
     </tr>
   <% end %>
