@@ -1,7 +1,7 @@
-<% if @user.errors.any? %>
+<% if resource.errors.any? %>
 <div class="error-alert">
   <div>
-    <% @user.errors.full_messages.each do |message| %>
+    <% resource.errors.full_messages.each do |message| %>
     <div class='text-danger'><%= message %></div>
     <% end %>
   </div>
