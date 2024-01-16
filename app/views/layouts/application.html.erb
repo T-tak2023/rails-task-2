@@ -5,51 +5,57 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <header>
-    <%= link_to "POTEPAN SHARE", home_index_path %>
-    <% if user_signed_in? %>
-      <li>
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </li>
-      <li>
-        <%= link_to "アカウント設定", users_account_path %>
-      </li>
-      <li>
-        <%= current_user.name %>
-      </li>
-      <li>
-        <% if current_user.icon_image? %>
-          <%= image_tag current_user.icon_image.url %>
-        <% else %>
-          <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン' %>
-        <% end %>
-      </li>
-      <li>
-        <%= link_to "登録施設一覧", :rooms %>
-      </li>
-      <li>
-        <%= link_to "予約一覧", :reservations %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to "新規作成", new_user_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_user_session_path %>
-      </li>
-    <% end %>
-    </header>
-
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;>
+      <div class="container-fluid">
+        <a class="navbar-brand fs-2 px-3" href="/">POTEPAN SHARE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item me-3">
+                <% if current_user.icon_image? %>
+                  <%= image_tag current_user.icon_image.url %>
+                <% else %>
+                  <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン' %>
+                <% end %>
+              </li>     
+              <li class="nav-item dropdown dropstart my-auto me-5">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= current_user.name %>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "施設新規登録", :new_room, class: "dropdown-item" %></li>
+                  <li><%= link_to "アカウント設定", users_account_path, class: "dropdown-item" %></li>
+                  <li><%= link_to "登録済み一覧", :rooms, class: "dropdown-item" %></li>
+                  <li><%= link_to "予約済み一覧", :reservations, class: "dropdown-item" %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li class="nav-item me-2">
+                <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+              </li>
+              <li class="nav-item me-2" >
+                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
 
     <%= yield %>
-
+    <div class="d-flex justify-content-center align-items-center">
+      <p class="notice bg-dark text-white"><%= notice %></p>
+      <p class="alert text-warning"><%= alert %></p>
+    </div>
   </body>
 </html>
