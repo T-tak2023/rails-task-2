@@ -1,23 +1,59 @@
-<h1>POTEPAN SHAREでまだ体験したことのない旅をしよう</h1>
-<h5>エリア検索</h5>
-<div>
-  <%= form_with model: @room, url: "/search", method: :get, local: true do |form| %>
-    <%= form.label :area, "Search for" %>
-    <%= form.text_field :area %>
-    <%= form.submit "検索" %>
-  <% end %>
-</div>
-<h5>フリーワード検索</h5>
-<div>
-  <%= form_with model: @room, url: "/search", method: :get, local: true do |form| %>
-    <%= form.label :keyword, "Search for" %>
-    <%= form.text_field :keyword %>
-    <%= form.submit "検索" %>
-  <% end %>
+<div class="d-flex flex-column align-items-center bg01">
+  <h2 class="display-4 p-3 my-3 lh-lg text-center text-white bg-success bg-opacity-25 ">
+    POTEPAN SHAREで<br>
+    まだ体験したことのない<br>
+    旅をしよう
+  </h2>
+  <div class="d-flex flex-column align-items-center bg-info text-white bg-opacity-75 p-3 w-50">
+    <div class="mb-4">
+      <h5>エリア検索</h5>
+      <div>
+        <%= form_with model: @room, url: "/search", method: :get, local: true do |form| %>
+          <%= form.text_field :area %>
+          <%= form.submit "検索" %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <h5>フリーワード検索</h5>
+      <div>
+        <%= form_with model: @room, url: "/search", method: :get, local: true do |form| %>
+          <%= form.text_field :keyword %>
+          <%= form.submit "検索" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>
 
-<h3>おすすめエリア</h3>
-<span><%= link_to '東京エリア', controller: :searches, action: :search, area: '東京' %></span>
-<span><%= link_to '大阪エリア', controller: :searches, action: :search, area: '大阪' %></span>
-<span><%= link_to '京都エリア', controller: :searches, action: :search, area: '京都' %></span>
-<span><%= link_to '札幌エリア', controller: :searches, action: :search, area: '札幌' %></span>
+<div>
+  <h2 class="border-bottom border-3 border-primary d-inline-block my-4">おすすめエリア</h2>
+</div>
+<div class="container text-center fs-4">
+  <div class="row">
+    <div class="col position-relative">
+      <%= link_to controller: :searches, action: :search, area: '東京' do %>
+        <%= image_tag('tokyo_image.jpg', alt: '東京エリア', class: 'img-fluid rounded') %>
+        <p class="bg-success bg-opacity-75 text-white position-absolute top-50 start-50 translate-middle w-75 ">東京<br>TOKYO</p>
+      <% end %>
+    </div>
+    <div class="col position-relative">
+      <%= link_to controller: :searches, action: :search, area: '大阪' do %>
+        <%= image_tag('osaka_image.jpg', alt: '大阪エリア', class: 'img-fluid rounded') %>
+        <p class="bg-success bg-opacity-75 text-white position-absolute top-50 start-50 translate-middle w-75 ">大阪<br>OSAKA</p>
+      <% end %>
+    </div>
+    <div class="col position-relative">
+      <%= link_to controller: :searches, action: :search, area: '京都' do %>
+        <%= image_tag('kyoto_image.jpg', alt: '京都エリア', class: 'img-fluid rounded') %>
+        <p class="bg-success bg-opacity-75 text-white position-absolute top-50 start-50 translate-middle w-75 ">京都<br>KYOTO</p>
+      <% end %>
+    </div>
+    <div class="col position-relative">
+      <%= link_to controller: :searches, action: :search, area: '札幌' do %>
+        <%= image_tag('sapporo_image.jpg', alt: '札幌エリア', class: 'img-fluid rounded') %>
+        <p class="bg-success bg-opacity-75 text-white position-absolute top-50 start-50 translate-middle w-75 ">札幌<br>SAPPORO</p>
+      <% end %>
+    </div>
+  </div>
+</div>
