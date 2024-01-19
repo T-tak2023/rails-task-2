@@ -1,40 +1,44 @@
-<h3>施設新規作成</h3>
+<div class="bg-light w-75 mx-auto mt-5 mb-3 d-flex flex-column align-items-center">
+  <h2 class="pt-4">施設新規作成</h2>
 
-<%= render 'shared/error', obj: @room %>
- 
-<%= form_with model: @room do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :room_name ,"施設名" %></th>
-      <td><%= f.text_field :room_name %></td>
-    </tr>
+  <%= render 'shared/error', obj: @room %>
 
-    <tr>
-      <th><%= f.label :room_introduction ,"施設詳細" %></th>
-      <td><%= f.text_field :room_introduction %></td>
-    </tr>
+  <%= form_with model: @room do |f| %>
+    <div>
+      <div class="mb-3">
+        <div><%= f.label :room_name ,"施設名" %></div>
+        <div><%= f.text_field :room_name, style:"width: 300px;" %></div>
+      </div>
 
-    <tr>
-      <th><%= f.label :price_per_day ,"料金" %></th>
-      <td><%= f.text_field :price_per_day %></td>
-    </tr>
+      <div class="mb-3">
+        <div><%= f.label :room_introduction ,"施設詳細" %></div>
+        <div><%= f.text_area :room_introduction, style:"width: 300px;" %></div>
+      </div>
 
-    <tr>
-      <th><%= f.label :room_address ,"住所" %></th>
-      <td><%= f.text_field :room_address %></td>
-    </tr>
+      <div class="mb-3">
+        <div><%= f.label :price_per_day ,"料金" %></div>
+        <div><%= f.text_field :price_per_day, style:"width: 300px;" %></div>
+      </div>
 
-    <tr>
-      <th><%= f.label :room_image ,"施設画像" %></th>
-      <td><%= f.file_field :room_image %></td>
-    </tr>
+      <div class="mb-3">
+        <div><%= f.label :room_address ,"住所" %></div>
+        <div><%= f.text_field :room_address, style:"width: 300px;" %></div>
+      </div>
 
-  </table>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <div>
-    <ul>
-      <li><%= f.submit "登録完了する" %></li>
-      <li><%= link_to "施設一覧に戻る", :rooms %></li>
-    </ul>
-  </div>
-<% end %>
+      <div class="mb-4">
+        <div><%= f.label :room_image ,"施設画像" %></div>
+        <div><%= f.file_field :room_image %></div>
+      </div>
+    </div>
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+
+    <div class="text-center">
+      <%= f.submit "登録する", class:"btn btn-success" %>
+    </div>
+    <div class="my-3 text-center">
+      <%= link_to "施設一覧に戻る", :rooms %>
+    </div>
+
+  <% end %>
+</div>

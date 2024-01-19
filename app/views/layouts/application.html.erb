@@ -13,7 +13,7 @@
   <body>
     <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;>
       <div class="container-fluid">
-        <a class="navbar-brand fs-2 px-3" href="/">POTEPAN SHARE</a>
+        <a class="navbar-brand text-primary fs-2 px-3" href="/">POTEPAN SHARE</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -22,9 +22,9 @@
             <% if user_signed_in? %>
               <li class="nav-item me-3">
                 <% if current_user.icon_image? %>
-                  <%= image_tag current_user.icon_image.url %>
+                  <%= image_tag current_user.icon_image.url,:alt => 'ユーザーアイコン' , class: "rounded-circle", size:"50x50" %>
                 <% else %>
-                  <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン' %>
+                  <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン', size:"50x50" %>
                 <% end %>
               </li>     
               <li class="nav-item dropdown dropstart my-auto me-5">
@@ -55,7 +55,6 @@
     <%= yield %>
 
     <div class="d-flex justify-content-center align-items-center">
-      <p class="text-success"><%= notice %></p>
       <p class="alert text-warning"><%= alert %></p>
       <p class="text-warning"><%= render "shared/error_messages", resource: resource %></p>
     </div>

@@ -12,9 +12,9 @@
       <th>アイコン画像</th>
       <td>
         <% if @user.icon_image? %>
-          <%= image_tag @user.icon_image.url %>
+          <%= image_tag @user.icon_image.url, size:"100x100" %>
         <% else %>
-          <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン' %>
+          <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン', size:"100x100" %>
         <% end %>
       </td>
     </tr>
