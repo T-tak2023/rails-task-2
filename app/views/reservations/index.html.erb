@@ -28,7 +28,7 @@
       <td><%= reservation.room.room_introduction %></td>
       <td><%= reservation.check_in_date.to_s(:date_jp) %></td>
       <td><%= reservation.check_out_date.to_s(:date_jp) %></td>
-      <td>¥<%= reservation.total_price %></td>
+      <td>¥<%= reservation.total_price.to_s(:delimited) %></td>
       <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
     </tr>
   <% end %>

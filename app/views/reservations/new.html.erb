@@ -1,53 +1,30 @@
-<h3>施設予約</h3>
-<%= render 'shared/error', obj: @reservation %>
-<table>
-  <tr>
-    <th>施設画像</th>
-    <td>
-      <% if @room.room_image? %>
-        <%= image_tag @room.room_image.url %>
-      <% else %>
-        <%= image_tag '/assets/default_room_image.png', :alt => '施設画像' %>
-      <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>施設名</th>
-    <td><%= @room.room_name %></td>
-  </tr>
-  <tr>
-    <th>詳細</th>
-    <td><%= @room.room_introduction %></td>
-  </tr>
-  <tr>
-    <th>料金</th>
-    <td><%= @room.price_per_day%></td>
-  </tr>
-</table>
-
-<%= form_with model: @reservation, url: confirm_reservations_path(@reservation), method: :post do |f| %>
-  <table>
-    <tr>
-      <th><%= f.label :check_in_date ,"チェックイン日" %></th>
-      <td><%= f.date_field :check_in_date %></td>
-    </tr>
-
-    <tr>
-      <th><%= f.label :check_out_date ,"チェックアウト日" %></th>
-      <td><%= f.date_field :check_out_date %></td>
-    </tr>
-
-    <tr>
-      <th><%= f.label :person ,"人数" %></th>
-      <td><%= f.number_field :person, in: 1..10 %></td>
-    </tr>
-  </table>
-  <%= f.hidden_field :user_id, value: current_user.id %>
-  <%= f.hidden_field :room_id, value: @room.id %>
-  <div>
-    <ul>
-      <li><%= f.submit "確認画面へ" %></li>
-      <li><%= link_to "予約一覧に戻る", :reservations %></li>
-    </ul>
-  </div>
-<% end %>
+<%= link_to '← 戻る', :back, class:"fs-5 m-4", style:"text-decoration: none;" %>
+<h3 class="text-center">施設予約</h3>
+<div class="mx-auto d-flex flex-column align-items-center">
+  <%= form_with model: @reservation, url: confirm_reservations_path(@reservation), method: :post do |f| %>
+    <div class="bg-dark-subtle bg-gradient bg-opacity-25 px-5 py-3">
+      <div>
+        <div class="mb-3">
+          <div><%= f.label :check_in_date ,"チェックイン日" %></div>
+          <div><%= f.date_field :check_in_date %></div>
+        </div>
+        <div class="mb-3">
+          <div><%= f.label :check_out_date ,"チェックアウト日" %></div>
+          <div><%= f.date_field :check_out_date %></div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <div><%= f.label :person ,"人数" %></div>
+        <div><%= f.number_field :person, in: 1..10 %><span class="small"> 人</span></div>
+      </div>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+      <div>
+        <div>
+          <p><%= f.submit "確認画面へ",class:"btn btn-success" %></p>
+        </div>
+      </div>
+    </div>
+  <% end %>
+  <%= render 'shared/error', obj: @reservation %>
+</div>

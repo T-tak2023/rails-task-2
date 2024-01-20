@@ -20,7 +20,7 @@
         <div><%= @room.room_introduction %></div>
       </div>
       <div>
-        <div class="display-6 text-success">¥<%= @room.price_per_day%>〜</div>
+        <div class="display-6 text-success">¥<%= @room.price_per_day.to_s(:delimited) %>〜</div>
       </div>
       <div class="text-center">
         <%= link_to '予約する', new_reservation_path(room_id: @room.id), class:"btn btn-success btn-lg" %>

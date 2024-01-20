@@ -1,22 +1,26 @@
 <div class="m-3">
   <span class="fs-4"><%= "#{@records.count}"%></span> 件が見つかりました。
 </div>
-<div class="container-fluid"> 
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+<div class="container"> 
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4">
     <% @records.each do |data| %>
-      <div class="col">
-        <div>
-          <% if data.room_image? %>
-            <%= image_tag data.room_image.url, class:"img-fluid rounded" %>
-          <% else %>
-            <%= image_tag '/assets/default_room_image.png', :alt => '施設画像', class:"img-fluid rounded" %>
-          <% end %>
+      <div class="col mb-4">
+        <div class="card h-100">
+            <div class="aspect-ratio-container">
+              <% if data.room_image? %>
+                <%= image_tag data.room_image.url, class:"aspect-ratio-item card-img-top"%>
+              <% else %>
+                <%= image_tag '/assets/default_room_image.png', :alt => '施設画像', class:"aspect-ratio-item card-img-top" %>
+              <% end %>
+            </div>
+          <div class="card-body">
+            <h5 class="card-title fw-bold"><%= data.room_name%></h5>
+            <p class="card-text text-secondary small"><%= data.room_address %></p>
+            <p class="card-text text-end fs-5">¥<%= data.price_per_day.to_s(:delimited) %><span class="fs-6 text-secondary">〜</span></p>
+            <p class="card-text ellipsis"><%= data.room_introduction %></p>
+            <div class="text-center"><%= link_to '詳細はこちら', data, class:"btn btn-primary" %></div>
+          </div> 
         </div>
-        <div><%= data.room_name%></div>
-        <div><%= data.room_address %></div>
-        <div><%= data.room_introduction %></div>
-        <div><%= data.price_per_day %></div>
-        <div><%= link_to '詳細はこちら', data %></div>
       </div>
     <% end %>
   </div>

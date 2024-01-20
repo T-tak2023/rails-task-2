@@ -22,8 +22,8 @@
         <% end %>
         </td> 
         <td><%= link_to room.room_name, room %></td>
-        <td><%= room.room_introduction %></td>
-        <td>¥<%= room.price_per_day %>〜</td>
+        <td class="w-50"><%= room.room_introduction %></td>
+        <td>¥<%= room.price_per_day.to_s(:delimited) %>〜</td>
         <td><%= room.created_at.to_s(:date_jp_b) %></td>
       </tr>
     <% end %>
