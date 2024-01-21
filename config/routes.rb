@@ -4,16 +4,12 @@ Rails.application.routes.draw do
     sessions:      'users/sessions'
   }
 
-  get 'users/account'
-  get 'users/profile'
-  get 'home/index'
-
   root to: 'home#index'
 
   resources :users , only: [:account, :profile, :profile_edit, :profile_update]
 
-  get 'users/account' => 'users#account'
-  get 'users/profile' => 'users#profile'
+  get 'users/account'
+  get 'users/profile'
   get 'users/profile/edit' => 'users#profile_edit'
   patch 'users/profile/edit' => 'users#profile_update'
 
