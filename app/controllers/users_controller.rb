@@ -18,13 +18,13 @@ class UsersController < ApplicationController
       redirect_to users_profile_path
     else
       render "profile_edit"
-    end 
+    end
   end
   private
     def configure_permitted_parameters
       devise_parameter_sanitizer.permit(:profile_update, keys: [:name, :introduction, :icon_image])
     end
-    
+
     def profile_params
       params.require(:user).permit(:name, :icon_image, :introduction)
     end
