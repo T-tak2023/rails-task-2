@@ -1,0 +1,71 @@
+.field_with_errors{
+  display: inline;
+}
+
+.bg01 {
+  background-image: image-url('top_image.jpg'); /* 画像のパスを指定 */
+  background-size: cover; /* 画像をカバーするように調整 */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像のリピートを無効に */
+  height: 600px; /* 適切な高さを指定 */
+  /* その他のスタイルや必要に応じて調整 */
+}
+
+.bg_tokyo{
+  background-image: image-url('tokyo_image.jpg'); /* 画像のパスを指定 */
+  background-size: cover; /* 画像をカバーするように調整 */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像のリピートを無効に */
+  height: 300px; /* 適切な高さを指定 */
+  /* その他のスタイルや必要に応じて調整 */
+}
+
+.bg_osaka{
+  background-image: image-url('osaka_image.jpg'); /* 画像のパスを指定 */
+  background-size: cover; /* 画像をカバーするように調整 */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像のリピートを無効に */
+  height: 300px; /* 適切な高さを指定 */
+  /* その他のスタイルや必要に応じて調整 */
+}
+
+.bg_kyoto{
+  background-image: image-url('kyoto_image.jpg'); /* 画像のパスを指定 */
+  background-size: cover; /* 画像をカバーするように調整 */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像のリピートを無効に */
+  height: 300px; /* 適切な高さを指定 */
+  /* その他のスタイルや必要に応じて調整 */
+}
+
+.bg_sapporo{
+  background-image: image-url('sapporo_image.jpg'); /* 画像のパスを指定 */
+  background-size: cover; /* 画像をカバーするように調整 */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像のリピートを無効に */
+  height: 300px; /* 適切な高さを指定 */
+  /* その他のスタイルや必要に応じて調整 */
+}
+
+.aspect-ratio-container {
+  position: relative;
+  padding-top: 75%; 
+}
+
+.aspect-ratio-item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ellipsis{
+  height: 4.5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}

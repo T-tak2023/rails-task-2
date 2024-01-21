@@ -1,0 +1,36 @@
+<h3 class="m-3">予約済み一覧</h3>
+<table class="table table-borderd">
+<thead>
+  <tr>
+    <th>予約id</th>
+    <th>施設画像</th>
+    <th>施設名</th>
+    <th>紹介文</th>
+    <th>チェックイン日</th>
+    <th>チェックアウト日</th>
+    <th>合計金額</th>
+    <th>予約確定日時</th>
+  </tr>
+</thead>
+
+<tbody>
+  <% @reservations.each do |reservation| %>
+    <tr class="align-middle">
+      <td><%= reservation.id %></td>
+      <td>
+        <% if reservation.room.room_image? %>
+          <%= link_to image_tag(reservation.room.room_image.url, size:"120x69"), reservation.room %>
+        <% else %>
+          <%= link_to image_tag('/assets/default_room_image.png', :alt => '施設画像', size:"120x69"), reservation.room %>
+        <% end %>
+      </td>
+      <td><%= reservation.room.room_name %></td>
+      <td><%= reservation.room.room_introduction %></td>
+      <td><%= reservation.check_in_date.to_s(:date_jp) %></td>
+      <td><%= reservation.check_out_date.to_s(:date_jp) %></td>
+      <td>¥<%= reservation.total_price.to_s(:delimited) %></td>
+      <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

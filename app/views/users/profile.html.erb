@@ -1,0 +1,29 @@
+<div class="bg-light w-75 mx-auto mt-5 mb-3 d-flex flex-column align-items-center">
+  <div class="d-flex flex-row justify-content-between w-50 py-4">
+    <h3>プロフィール</h3>
+    <%= link_to 'アカウント情報', users_account_path, class:"btn btn-primary" %>
+  </div>
+  <table class="table table-info table-bordered text-center w-75 align-middle my-2">
+    <tr>
+      <th>ユーザーネーム</th>
+      <td><%= @user.name %></td>
+    </tr>
+    <tr>
+      <th>アイコン画像</th>
+      <td>
+        <% if @user.icon_image? %>
+          <%= image_tag @user.icon_image.url, size:"100x100" %>
+        <% else %>
+          <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン', size:"100x100" %>
+        <% end %>
+      </td>
+    </tr>
+    <tr>
+      <th>自己紹介</th>
+      <td><%= @user.introduction %></td>
+    </tr>
+  </table>
+  <div class="mt-3 mb-4">
+    <%= link_to '編集する', users_profile_edit_path, class:"btn btn-outline-dark"  %>
+  </div>
+</div>

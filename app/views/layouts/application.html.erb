@@ -5,12 +5,63 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;" >
+      <div class="container-fluid">
+        <a class="navbar-brand text-primary fs-2 px-3" href="/">POTEPAN SHARE</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto text-end">
+            <% if user_signed_in? %>
+              <li class="nav-item me-3">
+                <% if current_user.icon_image? %>
+                  <%= image_tag current_user.icon_image.url,:alt => 'ユーザーアイコン' , class: "rounded-circle", size:"50x50" %>
+                <% else %>
+                  <%= image_tag '/assets/default_icon.png', :alt => 'ユーザーアイコン', size:"50x50" %>
+                <% end %>
+              </li>
+              <li class="nav-item dropdown dropstart my-auto me-5">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <%= current_user.name %>
+                </a>
+                <ul class="dropdown-menu text-end">
+                  <li><%= link_to "施設新規登録", :new_room, class: "dropdown-item" %></li>
+                  <li><%= link_to "アカウント設定", users_account_path, class: "dropdown-item" %></li>
+                  <li><%= link_to "登録済み一覧", :rooms, class: "dropdown-item" %></li>
+                  <li><%= link_to "予約済み一覧", :reservations, class: "dropdown-item" %></li>
+                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li class="nav-item me-2">
+                <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+              </li>
+              <li class="nav-item me-2" >
+                <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary" %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
     <%= yield %>
+
+    <div class="d-flex justify-content-center align-items-center mb-3">
+      <p class="alert text-warning"><%= alert %></p>
+      <p class="text-warning"><%= render "shared/error_messages", resource: resource %></p>
+    </div>
+
+    <footer class="bg-dark text-white ps-3 py-5">
+      <p class="display-6"><%= link_to 'Potepan Share', root_path, class:"text-decoration-none text-white" %></p>
+      <p>Copyright © Potepan Share 2024 All rights reserved</p>
+    </footer>
   </body>
 </html>
